@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 60;
+
 import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
 import axios from "axios";
 
