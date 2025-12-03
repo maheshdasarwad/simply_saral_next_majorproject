@@ -94,6 +94,7 @@ export default function HigherEducationPage() {
 
   return (
     <WelfareSchemesPage
+      sModule="higher_education"
       pageTitle="Higher Education Schemes"
       pageSubtitle="Discover government initiatives empowering students in higher education across India"
       schemes={schemes}

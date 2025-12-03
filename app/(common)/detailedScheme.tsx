@@ -124,24 +124,23 @@ const ImageModal: React.FC<ImageModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-4">
-      <div className="relative w-full max-w-4xl max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+      <div className="relative max-w-4xl max-h-[90vh] mx-4">
         <button
           onClick={onClose}
-          className="absolute -top-8 sm:-top-10 right-0 text-white hover:text-gray-300 transition-colors z-10"
-          aria-label="Close modal"
+          className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
         >
-          <CloseIcon className="w-6 h-6 sm:w-8 sm:h-8" />
+          <CloseIcon className="w-8 h-8" />
         </button>
 
-        <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
+        <div className="bg-white rounded-lg overflow-hidden">
           <img
             src={imageUrl}
             alt={`Sample of ${documentName}`}
             className="w-full h-auto max-h-[70vh] object-contain"
           />
-          <div className="p-3 sm:p-4 bg-white border-t">
-            <h3 className="text-sm sm:text-lg font-semibold text-gray-900">
+          <div className="p-4 bg-white border-t">
+            <h3 className="text-lg font-semibold text-gray-900">
               {documentName} - Sample
             </h3>
           </div>
@@ -161,43 +160,155 @@ interface HeroSectionProps {
   title: string;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
-  isDarkMode,
-  shortName,
-  imageUrl,
-  shortDescription,
-  portalLink,
-  title,
-}) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ isDarkMode, shortName,imageUrl,shortDescription,portalLink,title }) => {
   return (
     <section
-      className="relative h-[220px] sm:h-[280px] md:h-[320px] lg:h-[360px] overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg mx-0 my-4 sm:my-6 lg:my-8"
+      className="hero-section"
       role="region"
       aria-label={`${shortName} hero`}
     >
       <img
         src={imageUrl}
         alt={`${shortName} Scheme Banner`}
-        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        className="hero-image"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-700/90 via-blue-600/80 to-blue-500/70 flex flex-col justify-center p-4 sm:p-6 md:p-8 lg:p-12">
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-2 sm:mb-3 leading-tight max-w-3xl drop-shadow-md">
-          {title}
-        </h1>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/95 mb-4 sm:mb-5 md:mb-6 max-w-2xl drop-shadow-sm line-clamp-2 sm:line-clamp-none">
-          {shortDescription}
-        </p>
+      <div className="hero-overlay">
+        <h1 className="hero-title">{title}</h1>
+        <p className="hero-subtitle">{shortDescription}</p>
         <a
           href={portalLink}
-          className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 max-w-fit"
+          className="cta-button"
           aria-label={`Apply for ${shortName} on official site`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <User className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+          <User className="w-5 h-5" aria-hidden="true" />
           Apply Now
         </a>
       </div>
+
+      <style jsx>{`
+        .hero-section {
+          position: relative;
+          height: 300px;
+          overflow: hidden;
+          border-radius: 20px;
+          margin: 0 0 32px;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 6s ease;
+          will-change: transform;
+        }
+
+        .hero-section:hover .hero-image {
+          transform: scale(1.05);
+        }
+
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            to right,
+            rgba(59, 130, 246, 0.85) 0%,
+            rgba(37, 99, 235, 0.4) 100% 
+          );
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 48px;
+          gap: 12px;
+        }
+
+        .hero-title {
+          color: #fff;
+          font-size: 2rem;
+          font-weight: 700;
+          margin: 0;
+          max-width: 720px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          line-height: 1.1;
+          font-family: "Poppins", sans-serif;
+        }
+
+        .hero-subtitle {
+          color: rgba(255, 255, 255, 0.95);
+          font-size: 1.1rem;
+          margin: 0;
+          max-width: 600px;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background-color: #ff7b00;
+          color: #fff;
+          font-weight: 600;
+          padding: 12px 22px;
+          border-radius: 12px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          transition: background-color 0.25s, transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+          text-decoration: none;
+          font-size: 1rem;
+          width: fit-content;
+        }
+
+        .cta-button:hover {
+          background-color: #1b3b6f;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        @media (max-width: 992px) {
+          .hero-section {
+            height: 260px;
+          }
+          .hero-overlay {
+            padding: 32px;
+          }
+          .hero-title {
+            font-size: 1.8rem;
+          }
+          .hero-subtitle {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-section {
+            height: 200px;
+            border-radius: 12px;
+            margin: 24px 0;
+          }
+          .hero-overlay {
+            padding: 16px;
+          }
+          .hero-title {
+            font-size: 1.1rem;
+          }
+          .hero-subtitle {
+            font-size: 0.9rem;
+            max-width: 100%;
+          }
+          .cta-button {
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            border-radius: 10px;
+          }
+        }
+      `}</style>
     </section>
   );
 };
@@ -212,24 +323,24 @@ interface SchemeDetailLayoutProps {
 
 const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
   const {
-    title,
-    shortName,
-    keyInfo,
-    shortDescription,
-    detailedDescription,
-    portalLink,
-    benefits,
-    eligibilityCriteria,
-    nonEligible,
-    requiredDocuments,
-    applicationProcess,
-    faqs,
-    imageUrl,
-    launchedYear,
-    category,
-    detailedPage,
-    icon,
-  } = IWW;
+  title,
+  shortName,
+  keyInfo,
+  shortDescription,
+  detailedDescription,
+  portalLink,
+  benefits,
+  eligibilityCriteria,
+  nonEligible,
+  requiredDocuments,
+  applicationProcess,
+  faqs,
+  imageUrl,
+  launchedYear,
+  category,
+  detailedPage,
+  icon,
+ } = IWW;
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -309,7 +420,7 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
     if (typeof window === "undefined") return;
     const el = document.getElementById(id);
     if (el) {
-      const headerOffset = 80;
+      const headerOffset = 100;
       const elementPosition = el.getBoundingClientRect().top;
       const offset = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({ top: offset, behavior: "smooth" });
@@ -332,20 +443,12 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
         isDarkMode ? "bg-slate-950 text-slate-100" : "bg-gray-50 text-gray-900"
       }`}
     >
-      {/* Container with responsive padding */}
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-        <HeroSection
-          isDarkMode={isDarkMode}
-          shortName={shortName}
-          imageUrl={imageUrl}
-          title={title}
-          shortDescription={shortDescription}
-          portalLink={portalLink}
-        />
+        <HeroSection isDarkMode={isDarkMode} shortName={shortName} imageUrl={imageUrl} title={title} shortDescription={shortDescription} portalLink={portalLink}/>
       </div>
 
       <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 relative z-20">
-        {/* Breadcrumb - Always visible for all screen sizes */}
+        {/* Breadcrumb - Updated with Go Back navigation */}
         <div className="mb-4 sm:mb-6">
           <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm flex-wrap">
             <Link
@@ -370,6 +473,18 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
             >
               Schemes
             </Link>
+            <ChevronRight className="w-3 h-3" />
+            <button
+              onClick={() => window.history.back()}
+              className={`flex items-center gap-1 ${
+                isDarkMode
+                  ? "text-blue-400 hover:underline"
+                  : "text-blue-600 hover:underline"
+              }`}
+            >
+            
+              All Program
+            </button>
             <ChevronRight className="w-3 h-3" />
             <span
               className={
@@ -470,7 +585,7 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                         : "bg-blue-100"
                       : isDarkMode
                       ? "bg-red-900"
-                      : "bg-red-100";
+                        : "bg-red-100";
 
                   const textClass =
                     item.color === "purple"
@@ -637,7 +752,7 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
               </div>
             </div>
 
-            {/* Documents Section - Improved mobile table */}
+            {/* Documents Section - Using your table format */}
             <div
               id="documents"
               className={`rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border ${
@@ -703,11 +818,11 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-2 mt-3">
+                    <div className="flex flex-col gap-2 mt-3">
                       {doc.image ? (
                         <button
                           onClick={() => openImageModal(doc.image!, doc.name)}
-                          className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg transition-colors text-xs sm:text-sm font-medium ${
+                          className={`flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg transition-colors text-xs sm:text-sm font-medium ${
                             isDarkMode
                               ? "bg-blue-600 text-white hover:bg-blue-700"
                               : "bg-blue-500 text-white hover:bg-blue-600"
@@ -716,18 +831,27 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                           <FileText className="w-4 h-4" />
                           View Sample
                         </button>
-                      ) : (
-                        <div className="flex-1" />
-                      )}
+                      ) : null}
                       {doc.officialLink ? (
                         <a
                           href={doc.officialLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-xs sm:text-sm font-medium"
+                          className="flex items-center justify-center gap-1.5 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-xs sm:text-sm font-medium"
                         >
                           <ExternalLink className="w-4 h-4" />
-                          Official Link
+                          Official Site
+                        </a>
+                      ) : null}
+                      {doc.videoGuide ? (
+                        <a
+                          href={doc.videoGuide}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-xs sm:text-sm font-medium"
+                        >
+                          <Play className="w-4 h-4" />
+                          Video Guide
                         </a>
                       ) : null}
                     </div>
@@ -735,7 +859,7 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                 ))}
               </div>
 
-              {/* Desktop Table View */}
+              {/* Desktop Table View - Using your 5-column format */}
               <div className="hidden md:block overflow-x-auto -mx-2 sm:-mx-0">
                 <table
                   className={`w-full border-collapse ${
@@ -751,16 +875,19 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                       }`}
                     >
                       <th className="text-left py-3 px-4 font-semibold text-sm">
-                        No.
+                        Sr. No.
                       </th>
                       <th className="text-left py-3 px-4 font-semibold text-sm">
                         Document Name
                       </th>
-                      <th className="text-center py-3 px-4 font-semibold text-sm">
-                        Sample
+                      <th className="text-left py-3 px-4 font-semibold text-sm">
+                        Sample Image
                       </th>
-                      <th className="text-center py-3 px-4 font-semibold text-sm">
+                      <th className="text-left py-3 px-4 font-semibold text-sm">
                         Official Link
+                      </th>
+                      <th className="text-left py-3 px-4 font-semibold text-sm">
+                        Video Guide
                       </th>
                     </tr>
                   </thead>
@@ -793,20 +920,20 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                             </p>
                           </div>
                         </td>
-                        <td className="py-4 px-4 text-center">
+                        <td className="py-4 px-4">
                           {doc.image ? (
                             <button
                               onClick={() =>
                                 openImageModal(doc.image!, doc.name)
                               }
-                              className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-colors text-sm ${
+                              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-colors text-sm ${
                                 isDarkMode
                                   ? "bg-blue-600 text-white hover:bg-blue-700"
                                   : "bg-blue-500 text-white hover:bg-blue-600"
                               }`}
                             >
                               <FileText className="w-4 h-4" />
-                              View
+                              View Sample
                             </button>
                           ) : (
                             <span
@@ -816,20 +943,20 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                                   : "text-gray-500"
                               }`}
                             >
-                              N/A
+                              Not available
                             </span>
                           )}
                         </td>
-                        <td className="py-4 px-4 text-center">
+                        <td className="py-4 px-4">
                           {doc.officialLink ? (
                             <a
                               href={doc.officialLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm"
                             >
                               <ExternalLink className="w-4 h-4" />
-                              Official
+                              Official Site
                             </a>
                           ) : (
                             <span
@@ -839,7 +966,30 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                                   : "text-gray-500"
                               }`}
                             >
-                              N/A
+                              Not applicable
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-4 px-4">
+                          {doc.videoGuide ? (
+                            <a
+                              href={doc.videoGuide}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm"
+                            >
+                              <Play className="w-4 h-4" />
+                              Video Guide
+                            </a>
+                          ) : (
+                            <span
+                              className={`text-sm ${
+                                isDarkMode
+                                  ? "text-slate-500"
+                                  : "text-gray-500"
+                              }`}
+                            >
+                              Not available
                             </span>
                           )}
                         </td>

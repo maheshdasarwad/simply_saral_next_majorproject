@@ -1,5 +1,5 @@
 import con from "../../../../../../lib/conn.js";
-import FWM from "../../../../../../models/FarmerWelfare.js";
+import HEM from "../../../../../../models/HigherEducation.js";
 
 export async function GET(
   _req: Request,
@@ -9,7 +9,7 @@ export async function GET(
   console.log("Scheme ID:", scheme);
 
   await con();
-  const data = await FWM.findById(scheme);
+  const data = await HEM.findById(scheme);
   console.log(data);
 
   if (!data) {

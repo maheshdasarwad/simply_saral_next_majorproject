@@ -75,7 +75,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <FooterLink href="/" text="Home" />
               <FooterLink href="#services" text="Services" />
-              <FooterLink href="#features" text="Why Us" />
+              <FooterLink href="/#features" text="Why Us" />
               <FooterLink href="#contact" text="Contact" />
             </ul>
           </div>
@@ -85,10 +85,10 @@ export default function Footer() {
               Services
             </h3>
             <ul className="space-y-2">
-              <FooterLink href="/schemes/secondary_Education" text="Secondary Education" />
-              <FooterLink href="/schemes/higher_Education" text="Higher Education" />
-              <FooterLink href="/schemes/farmer_Welfare" text="Farmer Programs" />
-              <FooterLink href="/schemes/women_Welfare" text="Women's Welfare" />
+              <FooterLink href="/schemes/secondary_education" text="Secondary Education" />
+              <FooterLink href="/schemes/higher_education" text="Higher Education" />
+              <FooterLink href="/schemes/farmer_schemes" text="Farmer Programs" />
+              <FooterLink href="/schemes/women_welfare" text="Women's Welfare" />
             </ul>
           </div>
 
