@@ -1,37 +1,34 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+// middleware.ts - Update if needed
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // PUBLIC routes
-  const publicRoutes = ["/", "/login", "/signup"];
-  if (publicRoutes.includes(pathname)) {
+  const path = request.nextUrl.pathname;
+  
+  // Skip API routes from middleware protection
+  if (path.startsWith('/api/')) {
     return NextResponse.next();
   }
-
-  // PROTECTED route prefixes
-  const protectedPrefixes = ["/management", "/schemes"];
-  const isProtected = protectedPrefixes.some(prefix => pathname.startsWith(prefix));
-
-  // Check login state (example: cookie for demo; use your own method for production)
- const isLoggedIn = Boolean(request.cookies.get("auth-token")?.value);
-;
- if (isProtected && !isLoggedIn) {
-    const loginUrl = new URL("/login", request.url);
-    // Optionally let user return after login:
-    loginUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginUrl);
+  
+  // Check if the path starts with /management
+  if (path.startsWith('/management')) {
+    const token = request.cookies.get('admin-token')?.value;
+    
+    // For development, you might want to skip authentication
+    if (process.env.NODE_ENV === 'development') {
+      // Allow access in development
+      return NextResponse.next();
+    }
+    
+    // If no token, redirect to login
+    if (!token) {
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
   }
-
+  
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    "/schemes",
-    "/schemes/:path",
-    "/login",
-    "/signup",
-  ],
+  matcher: ['/management/:path*']
 };
