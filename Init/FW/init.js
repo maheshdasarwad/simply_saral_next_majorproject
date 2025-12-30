@@ -18,437 +18,358 @@ import FW from "../../models/FarmerWelfare.js"
 
 const data = [
   {
-    title: "Kisan Credit Card (KCC) Scheme – A Comprehensive Guide",
-    shortName: "KCC",
-    keyInfo: {
-      duration: "Up to 5 years",
-      amount: "Up to ₹3,00,000",
-      applyFrom: "1998",
-      lastDate: "As per bank",
-    },
-    shortDescription:
-      "The Kisan Credit Card (KCC) Scheme, launched in 1998, is a vital government initiative designed to provide farmers with timely and adequate credit support to meet their agricultural needs.",
-    portalLink: "https://rbi.org.in",
-    detailedDescription: [
-      "Launched in 1998 to provide timely and hassle-free credit support to farmers based on land holding and cropping pattern.",
-      "Short-term crop loan limit generally up to ₹3 lakh, with flexible limits based on land, crops, and scale of finance.",
-      "Typical interest rate around 7% per annum on crop loans, with additional interest subvention and prompt repayment incentives reducing effective rate for eligible farmers.",
-      "Card validity usually up to 5 years with periodic review and enhancement for rising costs or change in cropping pattern.",
-    ],
-    benefits: [
-      "Subsidized interest on crop loans, with government interest subvention and prompt repayment incentives lowering effective rates for eligible farmers.",
-      "Flexible repayment schedule aligned with crop harvest and marketing seasons, reducing stress on farmers’ cash flow.",
-      "Single KCC limit usable for crop production, post-harvest expenses, consumption needs, and allied activities such as dairy, poultry, and fisheries.",
-      "Simplified and recurrent access to working capital through a revolving credit facility instead of repeated loan applications.",
-    ],
-    eligibilityCriteria: [
-      "Individuals or joint borrowers who are owner-cultivators of agricultural land.",
-      "Tenant farmers, oral lessees and sharecroppers as per bank and state guidelines.",
-      "Age generally between 18 and 75 years, with a co-borrower required if above upper age limit as per bank norms.",
-    ],
-    nonEligible: [
-      "Borrowers with willful default or adverse credit history as per bank appraisal.",
-      "Activities not related to agriculture or allied sectors, as per scheme guidelines.",
-    ],
-    requiredDocuments: [
-      {
-        name: "Identity Proof",
-        description:
-          "Valid government-issued photo identity document of the farmer (e.g. Aadhaar, voter ID, PAN).",
-        image: "/Images/farmer_welf/kcc-id-proof.jpg",
-        officialLink: "https://uidai.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Address Proof",
-        description:
-          "Document confirming the current residential address of the farmer (e.g. ration card, utility bill, voter ID).",
-        image: "/Images/farmer_welf/kcc-address-proof.jpg",
-        officialLink: "https://www.india.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Land Ownership Proof",
-        description:
-          "Land records or other documents showing cultivable land or tenancy rights in the farmer’s name as per bank norms.",
-        image: "/Images/farmer_welf/kcc-land-proof.jpg",
-        officialLink: "https://bhulekh.mahabhumi.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Photographs",
-        description:
-          "Recent passport-sized photographs of the farmer as required by the bank.",
-        image: "/Images/farmer_welf/kcc-photo.jpg",
-        officialLink: "",
-        videoGuide: "",
-        importance: "Medium",
-      },
-      {
-        name: "Bank Account Details",
-        description:
-          "First page of bank passbook or statement showing account number, IFSC and farmer’s name.",
-        image: "/Images/farmer_welf/kcc-bank.jpg",
-        officialLink: "",
-        videoGuide: "",
-        importance: "High",
-      },
-    ],
-    applicationProcess: {
-      online: [
-        "Visit the eligible bank’s online portal or Kisan Rin related portal if available.",
-        "Register or log in and select the Kisan Credit Card (KCC) application option.",
-        "Fill out the application form with personal, landholding, and cropping details.",
-        "Upload KYC documents, land records, and bank account details as required.",
-        "Submit the application and track sanction status through the portal or SMS alerts.",
-      ],
-      offline: [
-        "Visit a nearby bank branch that offers Kisan Credit Card services.",
-        "Collect and fill out the KCC application form with details of landholding and crops grown.",
-        "Attach required documents including identity proof, address proof, land ownership records, and bank account details.",
-        "Submit the application to the bank officer for appraisal and verification.",
-        "Await sanction, execution of documents, and issuance of the Kisan Credit Card cum passbook or Rupay card.",
-      ],
-    },
-    faqs: [
-      {
-        question: "What is the maximum loan limit under KCC for crop loans?",
-        answer:
-          "KCC crop loan limits are typically fixed based on landholding, cropping pattern, and scale of finance, and many banks permit limits up to about ₹3 lakh for short-term crop credit, subject to internal policy.",
-      },
-      {
-        question: "Is collateral required for KCC?",
-        answer:
-          "Collateral requirements depend on the loan amount and bank guidelines; loans up to specified thresholds may be eligible for collateral-free coverage under applicable schemes.",
-      },
-    ],
-    imageUrl: "/Images/farmer_welf/kisan_Credit_Card.jpg",
-    launchedYear: 1998,
-    category: "Credit & Loan Schemes",
-    detailedPage: "/schemes/kisan-credit-card",
-    icon: "Banknote",
+  title: "Kisan Credit Card (KCC) Scheme",
+  shortName: "Kisan Credit Card",
+  keyInfo: {
+    duration: "5 years (renewable)",
+    amount: "Credit limit based on scale of finance, land holding and cropping pattern",
+    applyFrom: "August 1998",
+    lastDate: "No fixed deadline — applications accepted throughout the year",
   },
+  shortDescription:
+    "A government-backed credit scheme that provides timely and adequate short-term and term loans to farmers for agricultural and allied activities through banks under a single-window system.",
+  detailedDescription: [
+    "The Kisan Credit Card (KCC) Scheme was introduced in 1998 to provide farmers with timely access to affordable institutional credit for agriculture and allied activities.",
+    "The scheme covers short-term credit for crop cultivation, post-harvest expenses, household consumption needs, working capital for maintenance of farm assets, and term loans for agricultural investments.",
+    "The scheme is implemented through Commercial Banks, Regional Rural Banks (RRBs), Cooperative Banks and Small Finance Banks across India.",
+    "The credit limit under KCC is fixed by the bank based on land holding, cropping pattern, scale of finance and allied agricultural activities.",
+  ],
+  portalLink:
+    "https://www.myscheme.gov.in/schemes/kcc",
+  benefits: [
+    "Provides affordable and timely credit support for crop production and allied agricultural activities.",
+    "Single credit limit with flexible withdrawals and repayments, generally valid for five years subject to renewal.",
+    "RuPay KCC debit card facility for easy cash withdrawal and digital transactions.",
+    "Eligible farmers may receive interest subvention and prompt repayment incentives as per government guidelines.",
+  ],
+  eligibilityCriteria: [
+    "Individual farmers who are owner cultivators.",
+    "Tenant farmers, oral lessees and share croppers.",
+    "Self-Help Groups (SHGs) or Joint Liability Groups (JLGs) of farmers.",
+    "Farmers engaged in agriculture or allied activities requiring short-term or term credit.",
+  ],
+  nonEligible: [
+    "Individuals not engaged in agriculture or allied farming activities.",
+    "Applicants who do not satisfy bank credit norms or have serious loan defaults, as per bank policy.",
+  ],
+  requiredDocuments: [
+    {
+      name: "KCC Application Form",
+      description: "Duly filled application form provided by the bank",
+      image: "/public/Imges/common/application_form_kcc.pdf",
+      officialLink: "https://www.myscheme.gov.in/schemes/kcc",
+      videoGuide: "https://youtu.be/79uGBtYLvAE?si=UFk0Wciz9YGuR97w",
+      importance: "High",
+    },
+    {
+      name: "Identity Proof",
+      description: "Aadhaar Card / Voter ID / Driving License / Passport",
+      image: "/public/Imges/common/aadhar_card_sample.jpeg",
+      officialLink: "https://www.myscheme.gov.in/schemes/kcc",
+      videoGuide: "https://youtu.be/79uGBtYLvAE?si=UFk0Wciz9YGuR97w",
+      importance: "High",
+    },
+     {
+      name: "Aadhaar Card",
+      description: "Valid Aadhaar card linked with bank account",
+      image: "public/Imges/common/aadhar_card_sample.jpeg",
+      officialLink: "https://uidai.gov.in/",
+      videoGuide: "https://www.youtube.com/watch?app=desktop&v=ld-aM5DPVj8",
+      importance: "High",
+    },
+    {
+      name: "Land Ownership or Tenancy Documents",
+      description: "Land records, lease agreement or certificate from competent authority",
+      image: "/public/Imges/common/land_document_sample.jpg",
+      officialLink: "https://dolr.gov.in/citizen-centric-services/",
+      videoGuide: "https://youtu.be/gvV6B9EKf8M?si=YqnG_abzxqzKip3U",
+      importance: "High",
+    },
+   {
+      name: "Bank Account Details",
+      description: "Bank passbook first page or cancelled cheque (Aadhaar-linked)",
+      image: "public/Imges/common/bank_account_sample.jpg",
+      officialLink: "https://sbi.bank.in/web/customer-care/m-passbook",
+      videoGuide: "https://youtu.be/WmaXsYNvRhk?si=PiGdNj99QIEVj4cm",
+      importance: "High",
+    },
+    {
+      name: "Passport Size Photograph",
+      description: "Recent photograph of the applicant",
+      image: "public/Imges/common/photograph_sample.jpg",
+      officialLink: "",
+      videoGuide: "https://youtu.be/YfBiKLKCX0s?si=uPeBzz5h20gIcj6h",
+      importance: "Medium",
+    },
+  ],
+  applicationProcess: {
+    online: [
+      "Visit the official website of a participating bank.",
+      "Go to the Agriculture Loans or Kisan Credit Card section.",
+      "Fill in the online KCC application form or download and submit as instructed.",
+      "Submit required details and wait for bank verification and approval.",
+    ],
+    offline: [
+      "Visit the nearest branch of a participating bank.",
+      "Collect and fill the Kisan Credit Card application form.",
+      "Attach required documents and submit the application to the bank.",
+      "Bank verifies documents and sanctions the credit limit if eligible.",
+    ],
+  },
+  faqs: [
+    {
+      question: "Who can apply for the Kisan Credit Card?",
+      answer:
+        "Owner cultivators, tenant farmers, share croppers, oral lessees and SHGs/JLGs involved in agriculture or allied activities can apply.",
+    },
+    {
+      question: "What purposes are covered under KCC?",
+      answer:
+        "Crop cultivation, post-harvest expenses, household consumption needs, working capital and investment in agricultural assets.",
+    },
+    {
+      question: "Is there any interest subsidy under KCC?",
+      answer:
+        "Yes, interest subvention and prompt repayment incentives are available as per government norms.",
+    },
+    {
+      question: "What is the validity of a Kisan Credit Card?",
+      answer:
+        "The KCC is generally valid for 5 years and is renewable subject to bank review.",
+    },
+  ],
+  imageUrl: "/Images/farmer_welf/kisan_credit_card.jpg",
+  launchedYear: 1998,
+  category: "Agricultural Credit & Finance",
+  detailedPage: "farmer_schemes",
+  icon: "Banknote",
+}
+,
+ {
+  title: "Pradhan Mantri Krishi Sinchayee Yojana",
+  shortName: "PMKSY",
+  keyInfo: {
+    duration: "Ongoing",
+    amount: "Subsidy for micro-irrigation (Drip & Sprinkler)",
+    applyFrom: "2015",
+    lastDate: "As per state-wise phases / availability",
+  },
+  shortDescription:
+    "A Government of India scheme to expand irrigation coverage and improve water-use efficiency in agriculture.",
+  portalLink: "https://pmksy.gov.in",
+  detailedDescription: [
+    "Launched in 2015 with the objectives ‘Har Khet Ko Pani’ and ‘Per Drop More Crop’ to ensure assured irrigation and efficient water use.",
+    "Implemented through components such as Accelerated Irrigation Benefit Programme (AIBP), Har Khet Ko Pani (HKKP), and Per Drop More Crop (PDMC).",
+    "Under PDMC, farmers receive financial assistance for adoption of micro-irrigation systems like drip and sprinkler irrigation, implemented mainly through state agriculture departments.",
+  ],
+  benefits: [
+    "Promotes efficient use of water resources and reduces wastage through micro-irrigation technologies.",
+    "Provides subsidy support to farmers for installing drip and sprinkler irrigation systems.",
+    "Helps increase crop productivity and income, especially in water-stressed and rain-fed areas.",
+    "Encourages sustainable water management through convergence with watershed and irrigation projects.",
+  ],
+  eligibilityCriteria: [
+    "Farmers owning or cultivating agricultural land in areas notified by the state under PMKSY components.",
+    "Small and marginal farmers are given priority under micro-irrigation assistance.",
+    "Eligibility and subsidy norms are subject to state-specific guidelines under PMKSY.",
+  ],
+  nonEligible: [
+    "Applicants without valid land ownership or cultivation proof.",
+    "Farmers who have already availed full subsidy for the same land and irrigation system under PMKSY or similar schemes.",
+  ],
+  requiredDocuments: [
+    {
+      name: "Aadhaar Card",
+      description: "Valid Aadhaar card linked with bank account",
+      image: "public/Imges/common/aadhar_card_sample.jpeg",
+      officialLink: "https://uidai.gov.in/",
+      videoGuide: "https://www.youtube.com/watch?app=desktop&v=ld-aM5DPVj8",
+      importance: "High",
+    },
+    {
+      name: "Land Ownership or Tenancy Documents",
+      description: "Land records, lease agreement or certificate from competent authority",
+      image: "/public/Imges/common/land_document_sample.jpg",
+      officialLink: "https://dolr.gov.in/citizen-centric-services/",
+      videoGuide: "https://youtu.be/gvV6B9EKf8M?si=YqnG_abzxqzKip3U",
+      importance: "High",
+    },
+     {
+      name: "Bank Account Details",
+      description: "Bank passbook first page or cancelled cheque (Aadhaar-linked)",
+      image: "public/Imges/common/bank_account_sample.jpg",
+      officialLink: "https://sbi.bank.in/web/customer-care/m-passbook",
+      videoGuide: "https://youtu.be/WmaXsYNvRhk?si=PiGdNj99QIEVj4cm",
+      importance: "High",
+    },
+     {
+      name: "Passport Size Photograph",
+      description: "Recent photograph of the applicant",
+      image: "public/Imges/common/photograph_sample.jpg",
+      officialLink: "",
+      videoGuide: "https://youtu.be/YfBiKLKCX0s?si=uPeBzz5h20gIcj6h",
+      importance: "Medium",
+    },
+  ],
+  applicationProcess: {
+    online: [
+      "Visit the official PMKSY website or the concerned state agriculture / DBT portal.",
+      "Register/login as a farmer and select the relevant PMKSY component (e.g., Per Drop More Crop).",
+      "Fill in land, crop, and irrigation system details and upload required documents.",
+      "Submit the application and track status through the portal.",
+    ],
+    offline: [
+      "Approach the nearest Agriculture Department office or authorised implementing agency.",
+      "Collect and fill the PMKSY / micro-irrigation application form.",
+      "Attach required documents and submit for verification and technical approval.",
+    ],
+  },
+  faqs: [
+    {
+      question: "What subsidy is provided under PMKSY for micro-irrigation?",
+      answer:
+        "Under the Per Drop More Crop component, subsidy is generally up to 55% for small and marginal farmers and up to 45% for other farmers, subject to state norms.",
+    },
+    {
+      question: "Where can farmers apply for PMKSY benefits?",
+      answer:
+        "Farmers can apply through the PMKSY official portal or the respective state agriculture or DBT portals implementing the scheme.",
+    },
+  ],
+  imageUrl: "/Images/farmer_welf/PMKSY.jpg",
+  launchedYear: 2015,
+  category: "Irrigation & Water Management",
+  detailedPage: "farmer_schemes",
+  icon: "Droplet",
+}
+,
   {
-    title: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
-    shortName: "PMFBY",
-    keyInfo: {
-      duration: "Per season",
-      amount: "As per sum insured",
-      applyFrom: "2016",
-      lastDate: "State cut-off date",
-    },
-    shortDescription:
-      "The Pradhan Mantri Fasal Bima Yojana (PMFBY) provides comprehensive crop insurance coverage to farmers, protecting them from financial loss due to natural calamities, pests, and diseases.",
-    portalLink: "https://pmfby.gov.in",
-    detailedDescription: [
-      "Launched in 2016 to provide comprehensive risk coverage to farmers from pre-sowing to post-harvest stages for notified crops.",
-      "Premium payable by farmers is generally capped at around 2% of sum insured for Kharif food and oilseed crops, 1.5% for Rabi food and oilseed crops, and 5% for annual commercial and horticultural crops, with the balance premium subsidized.",
-      "Coverage includes yield losses due to widespread calamities and localised risks as notified, subject to scheme guidelines.",
-    ],
-    benefits: [
-      "Provides financial support to farmers in the event of crop failure due to natural calamities, pests, and diseases.",
-      "Encourages farmers to adopt modern and innovative agricultural practices by reducing income uncertainty.",
-      "Ensures flow of institutional credit to the agriculture sector by reducing credit risk.",
-    ],
-    eligibilityCriteria: [
-      "All eligible loanee farmers cultivating notified crops and having seasonal agricultural loans from financial institutions in notified areas are mandatorily covered.",
-      "Non-loanee farmers growing notified crops in notified areas can enrol on a voluntary basis within the stipulated cut-off dates.",
-    ],
-    nonEligible: [
-      "Crops and areas not notified by the state government for the given season.",
-      "Enrolments made after the cut-off date prescribed in state notifications.",
-    ],
-    requiredDocuments: [
-      {
-        name: "Identity Proof",
-        description: "Photo ID of the farmer for PMFBY enrolment.",
-        image: "/Images/farmer_welf/pmfby-id.jpg",
-        officialLink: "https://pmfby.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Land Ownership or Cultivation Proof",
-        description:
-          "Land records or cultivation/tenancy proof for the insured crops and area.",
-        image: "/Images/farmer_welf/pmfby-land.jpg",
-        officialLink: "https://pmfby.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Bank Account Details",
-        description: "Bank account where claim or benefit will be credited.",
-        image: "/Images/farmer_welf/pmfby-bank.jpg",
-        officialLink: "https://pmfby.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Loan Sanction Papers (for loanee farmers)",
-        description:
-          "Copy of crop loan sanction or KCC documents from the lending institution.",
-        image: "/Images/farmer_welf/pmfby-loan.jpg",
-        officialLink: "https://pmfby.gov.in",
-        videoGuide: "",
-        importance: "Medium",
-      },
-    ],
-    applicationProcess: {
-      online: [
-        "Register or log in on the official PMFBY portal as a farmer.",
-        "Select state, district, crop, and season, and fill in required personal and landholding details.",
-        "Upload necessary documents such as identity proof, land records, and bank account details.",
-        "Pay the applicable farmer share of premium through the portal or designated payment options.",
-        "Submit the application and note the acknowledgement/reference number for future tracking.",
-      ],
-      offline: [
-        "Visit the nearest bank branch, CSC, or agriculture department office that facilitates PMFBY enrolment.",
-        "Obtain and fill the PMFBY application form with details of notified crops, area, and season.",
-        "Attach required documents like identity proof, land documents or tenancy/cultivation proof, and bank account details.",
-        "Pay the applicable premium share at the counter or as directed.",
-        "Submit the form before the cut-off date and obtain a receipt or acknowledgement.",
-      ],
-    },
-    faqs: [
-      {
-        question: "What premium does a farmer pay under PMFBY?",
-        answer:
-          "Farmers generally pay around 2% of the sum insured for Kharif food and oilseed crops, 1.5% for Rabi food and oilseed crops, and 5% for annual commercial and horticultural crops, with the remaining premium subsidized as per scheme rules.",
-      },
-      {
-        question: "Which crops are covered under PMFBY?",
-        answer:
-          "Only those crops which are notified by the respective state or union territory for a given season and area are covered; notifications and crop lists are issued by state authorities each season.",
-      },
-    ],
-    imageUrl: "/Images/farmer_welf/pradhan_Mantri_Fasal.jpg",
-    launchedYear: 2016,
-    category: "Crop Insurance & Risk Management",
-    detailedPage: "/schemes/pmfby",
-    icon: "ShieldCheck",
+  title: "Pradhan Mantri Kisan Samman Nidhi Yojana",
+  shortName: "PM-KISAN",
+  keyInfo: {
+    duration: "Ongoing",
+    amount: "₹6,000/year",
+    applyFrom: "2019",
+    lastDate: "As per portal"
   },
-  {
-    title: "Pradhan Mantri Krishi Sinchayee Yojana",
-    shortName: "PMKSY",
-    keyInfo: {
-      duration: "Ongoing",
-      amount: "Subsidy on micro‑irrigation",
-      applyFrom: "2015",
-      lastDate: "As per phase",
+  shortDescription:
+    "PM-KISAN is a Central Sector scheme that provides assured income support of ₹6,000 per year to eligible landholding farmer families, paid in three equal instalments directly into their bank accounts to meet agricultural and household needs.",
+  portalLink: "https://pmkisan.gov.in",
+  detailedDescription: [
+    "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN) is a Central Sector scheme implemented nationwide to supplement the financial needs of landholding farmer families.",
+    "Under the scheme, eligible farmer families receive ₹6,000 per year, paid in three equal instalments of ₹2,000 each at four-monthly intervals through Direct Benefit Transfer (DBT).",
+    "The scheme supports farmers in procuring agricultural inputs such as seeds and fertilisers and in meeting other agricultural and household requirements."
+  ],
+  benefits: [
+    "Provides assured income support of ₹6,000 per year to eligible farmer families in three instalments of ₹2,000 each.",
+    "Instalments are transferred directly into farmers’ bank accounts through DBT, ensuring transparency and timely payments.",
+    "Helps reduce farmers’ dependence on informal credit for agricultural inputs and basic household needs."
+  ],
+  eligibilityCriteria: [
+    "All landholding farmer families having cultivable land recorded in their names in the State/UT land records, subject to verification by the respective State/UT government.",
+    "Farmer family is defined as husband, wife and minor children owning cultivable land, provided none falls under the exclusion categories.",
+    "Small, marginal and other landholding farmers are eligible; there is no upper landholding size limit, subject to exclusion rules.",
+    "Farmer data must be duly uploaded, verified and approved on the PM-KISAN portal."
+  ],
+  nonEligible: [
+    "All institutional landholders such as government institutions, public sector undertakings and other institutional farms.",
+    "Present and former constitutional post holders, current and former Union Ministers, MPs, MLAs, MLCs, Mayors of Municipal Corporations and Chairpersons of District Panchayats.",
+    "Serving or retired officers and employees of Central/State Government ministries, departments, PSUs, autonomous bodies and local bodies (except Class IV/Multi-Tasking Staff).",
+    "Retired pensioners drawing a monthly pension of ₹10,000 or more (excluding Class IV/Multi-Tasking Staff).",
+    "Professionals such as doctors, engineers, lawyers, chartered accountants and architects registered with professional bodies and practising the profession, even if they own agricultural land."
+  ],
+  requiredDocuments: [
+    {
+      name: "Aadhaar Card",
+      description: "Valid Aadhaar card linked with bank account",
+      image: "public/Imges/common/aadhar_card_sample.jpeg",
+      officialLink: "https://uidai.gov.in/",
+      videoGuide: "https://www.youtube.com/watch?app=desktop&v=ld-aM5DPVj8",
+      importance: "High",
     },
-    shortDescription:
-      "A scheme to improve irrigation efficiency and ensure water availability for agriculture.",
-    portalLink: "https://pmksy.gov.in",
-    detailedDescription: [
-      "Launched in 2015 with the motto “Har Khet Ko Pani” to expand cultivated area under assured irrigation and improve water use efficiency.",
-      "Supports micro-irrigation through components like Per Drop More Crop, providing financial assistance for drip and sprinkler systems.",
-      "Financial assistance commonly around 55% of unit cost for small and marginal farmers and 45% for other farmers, with higher support in specified regions.",
-    ],
-    benefits: [
-      "Improves on-farm water use efficiency and promotes the concept of ‘Per Drop More Crop’ through micro-irrigation.",
-      "Provides financial assistance/subsidy for installation of drip and sprinkler irrigation systems, reducing farmers’ capital burden.",
-      "Helps expand irrigated area, reduce water wastage, and stabilise yields in drought-prone and water-scarce regions.",
-      "Allows convergence with other schemes and watershed interventions for holistic water resource development.",
-    ],
-    eligibilityCriteria: [
-      "Farmers owning or cultivating agricultural land in areas covered under the notified PMKSY micro-irrigation or related components.",
-      "Priority often given to small and marginal farmers, water-stressed areas, and crops suitable for micro-irrigation as per state guidelines.",
-    ],
-    nonEligible: [
-      "Projects or installations that do not follow approved technical standards or are outside notified areas.",
-      "Applicants who do not provide required land and identity documents or who have already availed full subsidy for the same land and system under the scheme.",
-    ],
-    requiredDocuments: [
-      {
-        name: "Identity Proof",
-        description: "Identity document of the farmer for scheme registration.",
-        image: "/Images/farmer_welf/pmksy-id.jpg",
-        officialLink: "https://pmksy.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Address Proof",
-        description: "Proof of residence in the eligible area.",
-        image: "/Images/farmer_welf/pmksy-address.jpg",
-        officialLink: "https://pmksy.gov.in",
-        videoGuide: "",
-        importance: "Medium",
-      },
-      {
-        name: "Land Ownership or Cultivation Proof",
-        description:
-          "Land records specifying plots where micro‑irrigation will be installed.",
-        image: "/Images/farmer_welf/pmksy-land.jpg",
-        officialLink: "https://pmksy.gov.in",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Photographs",
-        description:
-          "Photographs of the farmer and proposed installation site as required.",
-        image: "/Images/farmer_welf/pmksy-photo.jpg",
-        officialLink: "",
-        videoGuide: "",
-        importance: "Medium",
-      },
-      {
-        name: "Bank Account Details",
-        description: "Bank account for receiving subsidy/assistance.",
-        image: "/Images/farmer_welf/pmksy-bank.jpg",
-        officialLink: "",
-        videoGuide: "",
-        importance: "High",
-      },
-    ],
-    applicationProcess: {
-      online: [
-        "Visit the official PMKSY or relevant state micro-irrigation portal, if available.",
-        "Register as a farmer and provide details of landholding, crops, and proposed micro-irrigation system.",
-        "Upload scanned copies of required documents, including identity proof, land records, and bank details.",
-        "Submit the application, select empanelled supplier/agency where required, and track approval status online.",
-      ],
-      offline: [
-        "Visit the nearest agriculture department office or designated implementing agency office in your area.",
-        "Obtain and fill in the PMKSY or micro-irrigation assistance application form with land and crop details.",
-        "Attach required documents such as land records, Aadhaar or other identity proof, and bank account details.",
-        "Submit the form for verification and technical assessment.",
-        "After approval, coordinate with authorised suppliers for installation and claim subsidy as per scheme procedure.",
-      ],
+   {
+      name: "Bank Account Details",
+      description: "Bank passbook first page or cancelled cheque (Aadhaar-linked)",
+      image: "public/Imges/common/bank_account_sample.jpg",
+      officialLink: "https://sbi.bank.in/web/customer-care/m-passbook",
+      videoGuide: "https://youtu.be/WmaXsYNvRhk?si=PiGdNj99QIEVj4cm",
+      importance: "High",
     },
-    faqs: [
-      {
-        question: "What level of subsidy is available for micro-irrigation under PMKSY?",
-        answer:
-          "Financial assistance is generally around 55% of the unit cost for small and marginal farmers and 45% for other farmers, with some states offering additional top-up subsidies.",
-      },
-      {
-        question: "Which irrigation systems are eligible?",
-        answer:
-          "Drip and sprinkler systems and other notified micro-irrigation technologies are eligible as per the Per Drop More Crop component guidelines.",
-      },
+   {
+      name: "Land Ownership or Tenancy Documents",
+      description: "Land records, lease agreement or certificate from competent authority",
+      image: "/public/Imges/common/land_document_sample.jpg",
+      officialLink: "https://dolr.gov.in/citizen-centric-services/",
+      videoGuide: "https://youtu.be/gvV6B9EKf8M?si=YqnG_abzxqzKip3U",
+      importance: "High",
+    },
+    {
+      name: "Valid Identity Document (if Aadhaar not available)",
+      description:
+        "Voter ID, driving licence, NREGA job card or other government-issued identity document as prescribed, applicable only in special cases.",
+      image: "public/Imges/common/aadhar_card_sample.jpeg",
+      officialLink: "https://uidai.gov.in/",
+      videoGuide: "https://www.youtube.com/watch?app=desktop&v=ld-aM5DPVj8",
+      importance: "High",
+    },
+    {
+      name: "Address Proof",
+      description: "Valid Aadhaar card linked with bank account",
+      image: "public/Imges/common/aadhar_card_sample.jpeg",
+      officialLink: "",
+      videoGuide: "https://youtu.be/2tbuh8NtNHQ?si=ryOjSuFhzXFWTgly",
+      importance: "High",
+    },
+  ],
+  applicationProcess: {
+    online: [
+      "Visit the official PM-KISAN portal (https://pmkisan.gov.in) and open the Farmers Corner section.",
+      "Select New Farmer Registration (where enabled by the State/UT) and enter Aadhaar number, personal details, bank details, land record information and contact details.",
+      "Complete Aadhaar-based eKYC using OTP or biometric verification at a CSC, as required.",
+      "After submission, details are verified by State/UT officials based on land records and eligibility criteria.",
+      "Once approved, the farmer is included in the beneficiary list and instalments are credited directly to the registered bank account. Status can be checked under Know Your Status / Beneficiary Status."
     ],
-    imageUrl: "/Images/farmer_welf/PMKSY.jpg",
-    launchedYear: 2015,
-    category: "Irrigation & Water Management",
-    detailedPage: "/schemes/pmksy",
-    icon: "Droplet",
+    offline: [
+      "Approach local authorities such as revenue officers, village patwari, village-level computer operators or designated nodal officers for PM-KISAN enrolment.",
+      "Apply through Common Service Centres (CSCs) or other government-designated centres where officials register the farmer on the PM-KISAN portal.",
+      "Submit Aadhaar, bank details, land records and other required documents for verification.",
+      "State/UT Agriculture or Revenue Departments prepare and certify beneficiary lists after verification, and funds are released electronically to approved beneficiaries."
+    ]
   },
-  {
-    title: "PM Kisan Samman Nidhi Yojana",
-    shortName: "PM-KISAN",
-    keyInfo: {
-      duration: "Ongoing",
-      amount: "₹6,000/year",
-      applyFrom: "2018",
-      lastDate: "As per portal",
+  faqs: [
+    {
+      question: "Who can apply for PM-KISAN?",
+      answer:
+        "All landholding farmer families with cultivable land recorded in their names in State/UT land records, who do not fall under the exclusion categories, can apply for PM-KISAN."
     },
-    shortDescription:
-      "A government initiative to provide financial assistance to farmers across India to support their agricultural and allied needs.",
-    portalLink: "https://pmkisan.gov.in/",
-    detailedDescription: [
-      "Launched in 2018–19 to provide assured income support of ₹6,000 per year to eligible farmer families.",
-      "Amount is paid in three equal instalments of ₹2,000 each directly into beneficiaries’ bank accounts through Direct Benefit Transfer.",
-      "Intended to support purchase of agricultural inputs and meet household needs of small and marginal farmers.",
-    ],
-    benefits: [
-      "Provides ₹6,000 annual income support to eligible farmer families in three equal instalments, credited directly to bank accounts.",
-      "Helps farmers meet agricultural input costs such as seeds, fertilizers, and other necessities, reducing dependence on informal credit.",
-      "Promotes financial inclusion by linking farmers to formal banking and digital payment systems.",
-    ],
-    eligibilityCriteria: [
-      "Farmer families with cultivable landholding recorded in their names as per land records, subject to scheme cut-off dates.",
-      "Applicants must complete mandatory e-KYC and have valid bank account and identity details linked as per scheme instructions.",
-    ],
-    nonEligible: [
-      "Institutional landholders and farmer families in higher income categories such as certain income tax payers, serving or retired senior government officers, and professionals as defined in the scheme guidelines.",
-      "Non-resident Indians and those not meeting landholding or documentation requirements.",
-    ],
-    requiredDocuments: [
-      {
-        name: "Identity Proof (e.g., Aadhaar)",
-        description:
-          "Aadhaar or other accepted identity document of the farmer.",
-        image: "/Images/farmer_welf/pmkisan-id.jpg",
-        officialLink: "https://pmkisan.gov.in/",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Land Ownership Records",
-        description:
-          "Land records showing cultivable land in the name of the farmer or eligible family member.",
-        image: "/Images/farmer_welf/pmkisan-land.jpg",
-        officialLink: "https://pmkisan.gov.in/",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Bank Account Details",
-        description:
-          "Savings bank account details for receiving instalments via DBT.",
-        image: "/Images/farmer_welf/pmkisan-bank.jpg",
-        officialLink: "https://pmkisan.gov.in/",
-        videoGuide: "",
-        importance: "High",
-      },
-      {
-        name: "Address Proof",
-        description:
-          "Document confirming residence in the eligible village/town or area.",
-        image: "/Images/farmer_welf/pmkisan-address.jpg",
-        officialLink: "https://pmkisan.gov.in/",
-        videoGuide: "",
-        importance: "Medium",
-      },
-      {
-        name: "Recent Photograph",
-        description: "Recent passport-sized photograph of the farmer.",
-        image: "/Images/farmer_welf/pmkisan-photo.jpg",
-        officialLink: "https://pmkisan.gov.in/",
-        videoGuide: "",
-        importance: "Medium",
-      },
-    ],
-    applicationProcess: {
-      online: [
-        "Visit the official PM‑KISAN portal and open the farmer registration section.",
-        "Enter Aadhaar number or other required identification details and fill basic personal and landholding information.",
-        "Provide bank account details and complete e‑KYC or OTP‑based verification as per instructions.",
-        "Submit the application and note the registration/reference number for tracking status.",
-        "Track approval and instalment status through the portal’s beneficiary status section.",
-      ],
-      offline: [
-        "Visit the nearest CSC, revenue/tehsildar office, or agriculture department office facilitating PM‑KISAN registration.",
-        "Fill in the prescribed application form with details of landholding, family, and bank account information.",
-        "Submit required documents such as Aadhaar, land records, and bank passbook copy.",
-        "Complete biometric or e‑KYC verification where required.",
-        "Wait for verification and inclusion in the beneficiary list; instalments are credited after approval.",
-      ],
+    {
+      question: "How much financial benefit is provided and how is it paid?",
+      answer:
+        "Eligible farmer families receive ₹6,000 per financial year, paid in three equal instalments of ₹2,000 each directly into their registered bank account through Direct Benefit Transfer."
     },
-    faqs: [
-      {
-        question: "How much assistance is provided under PM‑KISAN?",
-        answer:
-          "Eligible farmer families receive ₹6,000 per year in three equal instalments of ₹2,000 each, paid at four‑monthly intervals through Direct Benefit Transfer.",
-      },
-      {
-        question: "Who is not eligible for PM‑KISAN benefits?",
-        answer:
-          "Institutional landholders and specified higher‑income categories such as certain income tax payers, senior serving or retired officials, and some professionals are excluded as per scheme guidelines.",
-      },
-    ],
-    imageUrl: "/Images/farmer_welf/pm_Kisan_Samman.jpg",
-    launchedYear: 2019,
-    category: "Income Support Schemes",
-    detailedPage: "/schemes/pm-kisan",
-    icon: "BadgeDollarSign",
-  },
+    {
+      question: "Is Aadhaar mandatory for PM-KISAN?",
+      answer:
+        "Yes, Aadhaar is mandatory and eKYC using Aadhaar (OTP-based or biometric) is required for continued release of instalments. In some States/UTs, alternative IDs may be allowed temporarily as per guidelines."
+    },
+    {
+      question: "How can a farmer check beneficiary or instalment status?",
+      answer:
+        "Farmers can visit https://pmkisan.gov.in, open Farmers Corner and use the Know Your Status / Beneficiary Status option by entering registration or mobile number to view eligibility and payment details."
+    },
+    {
+      question: "What should be done if there is an error in name, Aadhaar or bank details?",
+      answer:
+        "Farmers can use Edit Aadhaar Details on the portal or contact the local agriculture/revenue office or CSC to correct details. Updates are verified by State/UT officials before instalments resume."
+    }
+  ],
+  imageUrl: "/Images/farmer_welf/pm_Kisan_Samman.jpg",
+  launchedYear: 2019,
+  category: "Income Support Schemes",
+  detailedPage: "farmer_schemes",
+  icon: "BadgeDollarSign",
+}
+
 ];
 
 const InsertData=async()=>{

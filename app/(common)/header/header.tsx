@@ -3,9 +3,17 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTheme } from '../../context/ThemeContext';
+import {
+  UserButton,
+  SignedIn,
+  SignedOut,
+  useClerk,
+} from "@clerk/nextjs";
+
 import { Moon, Sun, Menu, X } from 'lucide-react';
 
 export default function Header() {
+  const { openSignIn } = useClerk();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   return (
@@ -81,30 +89,44 @@ export default function Header() {
                 <span className="relative z-10">Home</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
               </Link>
-              <Link
-                href="/login"
-                className="px-6 py-2 text-white rounded-full font-semibold transform hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group"
-                style={{ backgroundColor: theme === 'dark' ? '#2563eb' : '#1d4ed8' }}
-              >
-                <span className="relative z-10">Log In</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-              </Link>
-              <Link
-                href="/signup"
-                className="px-6 py-2 text-white rounded-full font-semibold transform hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group"
-                style={{ backgroundColor: theme === 'dark' ? '#2563eb' : '#1d4ed8' }}
-              >
-                <span className="relative z-10">Sign Up</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-              </Link>
-              <Link
+
+             <Link
                 href="/management"
                 className="px-6 py-2 text-white rounded-full font-semibold transform hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group"
                 style={{ backgroundColor: theme === 'dark' ? '#2563eb' : '#1d4ed8' }}
               >
                 <span className="relative z-10">Management</span>
+
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
               </Link>
+
+               {/* Auth Section */}
+            <SignedIn>
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox:
+                      "w-9 h-9 rounded-full ring-2 ring-blue-500",
+                    userButtonTrigger:
+                      "transition-transform duration-300 hover:-translate-y-0.5",
+                  },
+                }}
+              />
+            </SignedIn>
+
+            <SignedOut>
+              <button
+                onClick={() => openSignIn()}
+                className="px-6 py-2 text-white rounded-full font-semibold transform hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group"
+                style={{ backgroundColor: theme === "dark" ? "#2563eb" : "#1d4ed8" }}
+              >
+                <span className="relative z-10">Sign In</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+              </button>
+            </SignedOut>
+
+
               <button
                 onClick={toggleTheme}
                 className="ml-4 w-9 h-9 rounded-full border-2 flex items-center justify-center transform hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group"
@@ -122,6 +144,7 @@ export default function Header() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
               </button>
             </div>
+
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -134,18 +157,24 @@ export default function Header() {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden py-4 flex flex-col gap-4">
-              <Link
-                href="/login"
-                className="px-6 py-2 bg-blue-700 text-white rounded-full font-semibold text-center"
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="px-6 py-2 bg-blue-700 text-white rounded-full font-semibold text-center"
-              >
-                Sign Up
-              </Link>
+              
+              {/* Mobile Auth */}
+                <SignedIn>
+                  <div className="flex justify-center py-2">
+                    <UserButton afterSignOutUrl="/" />
+                  </div>
+                </SignedIn>
+
+                <SignedOut>
+                  <button
+                    onClick={() => openSignIn()}
+                    className="px-6 py-2 bg-blue-700 text-white rounded-full font-semibold text-center"
+                  >
+                    Sign In
+                  </button>
+                </SignedOut>
+
+              
               <Link
                 href="/management"
                 className="px-6 py-2 bg-blue-700 text-white rounded-full font-semibold text-center"

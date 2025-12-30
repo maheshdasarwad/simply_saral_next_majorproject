@@ -319,9 +319,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ isDarkMode, shortName,imageUr
 
 interface SchemeDetailLayoutProps {
   IWW: IWW;
+  module:String
 }
 
-const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
+const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW ,module }) => {
   const {
   title,
   shortName,
@@ -448,7 +449,7 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
       </div>
 
       <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 relative z-20">
-        {/* Breadcrumb - Updated with Go Back navigation */}
+        {/* Breadcrumb - Always visible for all screen sizes */}
         <div className="mb-4 sm:mb-6">
           <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm flex-wrap">
             <Link
@@ -471,20 +472,19 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                   : "text-blue-600 hover:underline"
               }
             >
-              Schemes
+              Modules
             </Link>
             <ChevronRight className="w-3 h-3" />
-            <button
-              onClick={() => window.history.back()}
-              className={`flex items-center gap-1 ${
+            <Link
+              href={`/schemes/${module}`}
+              className={
                 isDarkMode
                   ? "text-blue-400 hover:underline"
                   : "text-blue-600 hover:underline"
-              }`}
+              }
             >
-            
-              All Program
-            </button>
+              SchemeList
+            </Link>
             <ChevronRight className="w-3 h-3" />
             <span
               className={
@@ -585,7 +585,7 @@ const SchemeDetailPage: React.FC<SchemeDetailLayoutProps> = ({ IWW }) => {
                         : "bg-blue-100"
                       : isDarkMode
                       ? "bg-red-900"
-                        : "bg-red-100";
+                      : "bg-red-100";
 
                   const textClass =
                     item.color === "purple"

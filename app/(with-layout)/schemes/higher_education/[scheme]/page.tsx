@@ -1,6 +1,10 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 import SchemeDetailPage from "../../../../(common)/detailedScheme"; 
 import { IWW } from "../../../../(common)/detailedScheme";
-import axios from "axios";
+import con from "@/lib/conn.js";
+import HEM from "@/models/HigherEducation.js";
+import { notFound } from "next/navigation";
 
 
 
@@ -119,12 +123,16 @@ import axios from "axios";
 //   };
 
   export default async function LadkiBahinPage({ params }: { params:Promise< { scheme: string }>}) {
+  await con();
   const {scheme}=await params;
-  const response = await axios.get(`http://localhost:3000/schemes/higher_education/${scheme}/api`);
-  const schemes = response.data;
-  const SCHEME_DATA:IWW=schemes;
-  console.log("HigherEducation schemes loaded:", schemes);
+  const data = await HEM.findById(scheme).lean();
 
-  return <SchemeDetailPage IWW={SCHEME_DATA} />;
+  if (!data) {
+    notFound();
+  }
+
+  const SCHEME_DATA = JSON.parse(JSON.stringify(data)) as IWW;
+  
+  return <SchemeDetailPage IWW={SCHEME_DATA} module="higher_education"/>;
 }
  

@@ -1,15 +1,24 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
+
 import SchemeDetailPage from "../../../../(common)/detailedScheme"; 
 import { IWW } from "../../../../(common)/detailedScheme";
-import axios from "axios";
+import con from "@/lib/conn.js";
+import WWM from "@/models/WomenWelfare.js";
+import { notFound } from "next/navigation";
 
 
   export default async function WWPage({ params }: { params:Promise< { scheme: string }>}) {
+  await con();      
   const {scheme}=await params;
-  const response = await axios.get(`http://localhost:3000/schemes/women_welfare/${scheme}/api`);
-  const schemes = response.data;
-  const SCHEME_DATA:IWW=schemes;
-  console.log("Farmer schemes loaded:", schemes);
+  const data = await WWM.findById(scheme).lean();
 
-  return <SchemeDetailPage IWW={SCHEME_DATA} />;
+    if (!data) {
+      notFound();
+    }
+
+    const SCHEME_DATA = JSON.parse(JSON.stringify(data)) as IWW;
+    
+    return <SchemeDetailPage IWW={SCHEME_DATA} module="women_welfare"/>;
 }
  

@@ -1,8 +1,9 @@
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 3600;
 
 import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
-import axios from "axios";
+import con from '@/lib/conn.js';
+import SEM from '@/models/SecondaryEducation.js';
 
 const SECONDARY_EDU_CAROUSEL_SLIDES: CarouselSlide[] = [
   {
@@ -42,16 +43,16 @@ const Secondary_FILTER_CATEGORIES: FilterCategory[] = [
 
 
 export default async function SecondaryEducationPage() {
-  const response = await axios.get("http://localhost:3000/schemes/secondary_education/api");
-  const Secondary_Education_SCHEMES = response.data.data;
-  console.log(Secondary_Education_SCHEMES);
-
+      await con();
+      const docs = await SEM.find({}).lean();
+      const data = JSON.parse(JSON.stringify(docs));
+  
   return (
     <WelfareSchemesPage
       sModule="secondary_education"
       pageTitle="Secondary Education Schemes"
       pageSubtitle = "Discover government initiatives empowering students in Secondary education across India"
-      schemes={Secondary_Education_SCHEMES}
+      schemes={data}
       carouselSlides={SECONDARY_EDU_CAROUSEL_SLIDES}
       filterCategories={Secondary_FILTER_CATEGORIES}
       accentColor={{ light: "blue-700", dark: "orange-400" }}

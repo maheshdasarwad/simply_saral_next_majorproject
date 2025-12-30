@@ -1,8 +1,9 @@
 export const dynamic = 'force-dynamic';
-export const revalidate = 60;
+export const revalidate = 3600;
 
 import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
-import axios from "axios";
+import con from '@/lib/conn.js';
+import WWM from '@/models/WomenWelfare.js';
 
 const WOMEN_CAROUSEL_SLIDES: CarouselSlide[] = [
   {
@@ -46,19 +47,19 @@ const WOMEN_FILTER_CATEGORIES: FilterCategory[] = [
 
 
 export default async function WomenWelfarePage() {
-  const response = await axios.get("http://localhost:3000/schemes/women_welfare/api");
-  const WOMEN_WELFARE_SCHEMES = response.data.data;
-  console.log(WOMEN_WELFARE_SCHEMES);
+      await con();
+      const docs = await WWM.find({}).lean();
+      const data = JSON.parse(JSON.stringify(docs));
 
-  return (
-    <WelfareSchemesPage
-      sModule="women_welfare"
-      pageTitle="Women Welfare Schemes"
-      pageSubtitle="Discover government initiatives empowering women across India"
-      schemes={WOMEN_WELFARE_SCHEMES}
-      carouselSlides={WOMEN_CAROUSEL_SLIDES}
-      filterCategories={WOMEN_FILTER_CATEGORIES}
-      accentColor={{ light: "blue-700", dark: "orange-400" }}
-    />
-  );
+      return (
+        <WelfareSchemesPage
+          sModule="women_welfare"
+          pageTitle="Women Welfare Schemes"
+          pageSubtitle="Discover government initiatives empowering women across India"
+          schemes={data}
+          carouselSlides={WOMEN_CAROUSEL_SLIDES}
+          filterCategories={WOMEN_FILTER_CATEGORIES}
+          accentColor={{ light: "blue-700", dark: "orange-400" }}
+        />
+      );
 }

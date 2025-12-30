@@ -1,8 +1,9 @@
-"use client";
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
-import { useEffect, useState } from "react";
 import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
-import axios from "axios";
+import con from '@/lib/conn.js';
+import HEM from '@/models/HigherEducation.js';
 
 const HIGHER_EDU_CAROUSEL_SLIDES: CarouselSlide[] = [
   {
@@ -48,56 +49,16 @@ const HIGHER_FILTER_CATEGORIES: FilterCategory[] = [
   },
 ];
 
-export default function HigherEducationPage() {
-  const [schemes, setSchemes] = useState<SchemeData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+export default async function HigherEducationPage() {
+    await con();
+    const docs = await HEM.find({}).lean();
+    const data = JSON.parse(JSON.stringify(docs));
 
-  useEffect(() => {
-    const fetchSchemes = async () => {
-      try {
-        const response = await axios.get("/schemes/higher_education/api");
-        setSchemes(response.data.data || []);
-        console.log('Higher Education schemes loaded:', response.data.data);
-      } catch (err) {
-        console.error('Error fetching higher education schemes:', err);
-        setError('Failed to load schemes');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSchemes();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading higher education schemes...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center text-red-600">
-          <p className="text-xl font-semibold mb-2">Error Loading Schemes</p>
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <WelfareSchemesPage
+    return(<WelfareSchemesPage
       sModule="higher_education"
       pageTitle="Higher Education Schemes"
       pageSubtitle="Discover government initiatives empowering students in higher education across India"
-      schemes={schemes}
+      schemes={data}
       carouselSlides={HIGHER_EDU_CAROUSEL_SLIDES}
       filterCategories={HIGHER_FILTER_CATEGORIES}
       accentColor={{ light: "blue-700", dark: "orange-400" }}

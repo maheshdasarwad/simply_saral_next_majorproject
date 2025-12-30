@@ -1,14 +1,22 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 import SchemeDetailPage from "../../../../(common)/detailedScheme"; 
 import { IWW } from "../../../../(common)/detailedScheme";
-import axios from "axios";
+import con from "@/lib/conn.js";
+import SEM from "@/models/SecondaryEducation.js";
+import { notFound } from "next/navigation";
 
 export default async function SEPage({ params }: { params:Promise< { scheme: string }>}) {
+  await con()
   const {scheme}=await params;
-  const response = await axios.get(`http://localhost:3000/schemes/secondary_education/${scheme}/api`);
-  const schemes = response.data;
-  const SCHEME_DATA:IWW=schemes;
-  console.log("Secondary Education schemes loaded:", schemes);
+  const data = await SEM.findById(scheme).lean();
 
-  return <SchemeDetailPage IWW={SCHEME_DATA} />;
+    if (!data) {
+      notFound();
+    }
+
+    const SCHEME_DATA = JSON.parse(JSON.stringify(data)) as IWW;
+    
+    return <SchemeDetailPage IWW={SCHEME_DATA} module="secondary_education"/>;
 }
  

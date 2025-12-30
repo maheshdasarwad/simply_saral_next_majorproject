@@ -1,9 +1,14 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
+
+import con from '@/lib/conn.js';
+import FWM from '@/models/FarmerWelfare.js';
+
 import WelfareSchemesPage, {
-  SchemeData,
   CarouselSlide,
   FilterCategory,
 } from "../../../(common)/_welfSchComp";
-import axios from "axios";
+
 
 const FARMER_CAROUSEL_SLIDES: CarouselSlide[] = [
   {
@@ -47,17 +52,15 @@ const FARMER_FILTER_CATEGORIES: FilterCategory[] = [
 ];
 
 export default async function FarmerSchemesPage() {
-  const response = await axios.get("http://localhost:3000/schemes/farmer_schemes/api");
-
-  const schemes = response.data.data;
-  console.log("Farmer schemes loaded:", schemes);
-
+  await con();
+  const docs = await FWM.find({}).lean();
+  const data = JSON.parse(JSON.stringify(docs));
   return (
     <WelfareSchemesPage
       sModule="farmer_schemes"
       pageTitle="Farmer Welfare Schemes"
       pageSubtitle="Discover government initiatives empowering farmers across India"
-      schemes={schemes}
+      schemes={data}
       carouselSlides={FARMER_CAROUSEL_SLIDES}
       filterCategories={FARMER_FILTER_CATEGORIES}
       accentColor={{ light: "blue-700", dark: "orange-400" }}
