@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 60;
+
 import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
 import axios from "axios";
 
@@ -44,12 +47,12 @@ const WOMEN_FILTER_CATEGORIES: FilterCategory[] = [
 
 export default async function WomenWelfarePage() {
   const response = await axios.get("http://localhost:3000/schemes/women_welfare/api");
-// THE FIX IS HERE:
-const WOMEN_WELFARE_SCHEMES = response.data.data;
-console.log(WOMEN_WELFARE_SCHEMES);
+  const WOMEN_WELFARE_SCHEMES = response.data.data;
+  console.log(WOMEN_WELFARE_SCHEMES);
 
   return (
     <WelfareSchemesPage
+      sModule="women_welfare"
       pageTitle="Women Welfare Schemes"
       pageSubtitle="Discover government initiatives empowering women across India"
       schemes={WOMEN_WELFARE_SCHEMES}

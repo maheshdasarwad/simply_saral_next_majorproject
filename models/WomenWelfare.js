@@ -1,32 +1,50 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const RequiredDocumentSchema = new mongoose.Schema({
-    name: { type: String },
-    sampleImage: { type: String, default: "" },
-    portalLink: { type: String },
-    videoLink: { type: String, default: "" }
-});
+const requiredDocumentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  image: { type: String },
+  officialLink: { type: String },
+  videoGuide: { type: String },
+  importance: { type: String, enum: ['High', 'Medium', 'Low'] }
+}, { _id: false });
+
+const applicationProcessSchema = new mongoose.Schema({
+  online: [{ type: String }],
+  offline: [{ type: String }]
+}, { _id: false });
+
+const faqSchema = new mongoose.Schema({
+  question: { type: String, required: true },
+  answer: { type: String, required: true }
+}, { _id: false });
+
+const keyInfoSchema = new mongoose.Schema({
+  duration: { type: String, required: true },
+  amount: { type: String, required: true },
+  applyFrom: { type: String },
+  lastDate: { type: String }
+}, { _id: false });
 
 const WWSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    shortDescription: { type: String, required: true },
-    portalLink: { type: String, required: true },
-    detailedDescription: { type: String, required: true },
-    benefits: { type: [String], required: true },
-    eligibilityCriteria: { type: [String] },
-    nonEligible: { type: [String]},
-    requiredDocuments: [RequiredDocumentSchema],
-    applicationProcess: {
-        online: { type: [String] },
-        offline: { type: [String] }
-    },
-    faqs: { type: [String], default: [] },
-    imageUrl: { type: String, default: "" },
-    launchedYear:{ type: String, required: true },
-    category:{ type: String, required: true },
-    detailedPage:{ type: String, required: true },
-    icon:{ type: String, required: true },
-});
+  title: { type: String, required: true },
+  shortName: { type: String, required: true },
+  keyInfo: keyInfoSchema,
+  shortDescription: { type: String, required: true },
+  detailedDescription: [{ type: String }],
+  portalLink: { type: String, required: true },
+  benefits: [{ type: String }],
+  eligibilityCriteria: [{ type: String }],
+  nonEligible: [{ type: String }],
+  requiredDocuments: [requiredDocumentSchema],
+  applicationProcess: applicationProcessSchema,
+  faqs: [faqSchema],
+  imageUrl: { type: String },
+  launchedYear: { type: Number },
+  category: { type: String },
+  detailedPage: { type: String },
+  icon: { type: String }
+})
 
 
 const WWModel=mongoose.models.WWModel ||mongoose.model("WWModel",WWSchema);

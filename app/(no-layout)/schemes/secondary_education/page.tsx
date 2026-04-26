@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
 import axios from "axios";
 
@@ -40,12 +43,12 @@ const Secondary_FILTER_CATEGORIES: FilterCategory[] = [
 
 export default async function SecondaryEducationPage() {
   const response = await axios.get("http://localhost:3000/schemes/secondary_education/api");
-// THE FIX IS HERE:
   const Secondary_Education_SCHEMES = response.data.data;
   console.log(Secondary_Education_SCHEMES);
 
   return (
     <WelfareSchemesPage
+      sModule="secondary_education"
       pageTitle="Secondary Education Schemes"
       pageSubtitle = "Discover government initiatives empowering students in Secondary education across India"
       schemes={Secondary_Education_SCHEMES}

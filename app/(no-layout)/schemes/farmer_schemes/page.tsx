@@ -1,29 +1,32 @@
-import WelfareSchemesPage, { SchemeData, CarouselSlide, FilterCategory, IconName } from "../../../(common)/_welfSchComp";
+import WelfareSchemesPage, {
+  SchemeData,
+  CarouselSlide,
+  FilterCategory,
+} from "../../../(common)/_welfSchComp";
 import axios from "axios";
 
 const FARMER_CAROUSEL_SLIDES: CarouselSlide[] = [
   {
     image: "/Images/farmer_welf/kisan_Credit_Card.jpg",
     title: "Kisan Credit Card",
-    subtitle: "Providing financial support to farmers"
+    subtitle: "Providing financial support to farmers",
   },
   {
-    image: "/Images/farmer_welf/pm_Kisan_Samman.jpg", 
+    image: "/Images/farmer_welf/pm_Kisan_Samman.jpg",
     title: "PM Kisan Samman",
-    subtitle: "Direct benefit transfer for farmers"
+    subtitle: "Direct benefit transfer for farmers",
   },
   {
     image: "/Images/farmer_welf/PMKSY.jpg",
     title: "PMKSY Scheme",
-    subtitle: "Promoting efficient water use in farming"
+    subtitle: "Promoting efficient water use in farming",
   },
   {
-    image: "/Images/farmer_welf/pradhan_Mantri_Fasal.jpg", 
+    image: "/Images/farmer_welf/pradhan_Mantri_Fasal.jpg",
     title: "Fasal Bima Yojana",
-    subtitle: "Crop insurance for risk-free farming"
-  }
+    subtitle: "Crop insurance for risk-free farming",
+  },
 ];
-
 
 const FARMER_FILTER_CATEGORIES: FilterCategory[] = [
   {
@@ -38,23 +41,23 @@ const FARMER_FILTER_CATEGORIES: FilterCategory[] = [
       { label: "Agricultural Infrastructure & Development", icon: "Building" },
       { label: "Seeds, Fertilizers & Input Support", icon: "Leaf" },
       { label: "Training, Education & Skill Development", icon: "GraduationCap" },
-      { label: "Welfare & Social Security Schemes", icon: "HeartPulse" }
+      { label: "Welfare & Social Security Schemes", icon: "HeartPulse" },
     ],
   },
 ];
 
-
 export default async function FarmerSchemesPage() {
   const response = await axios.get("http://localhost:3000/schemes/farmer_schemes/api");
-// THE FIX IS HERE:
-const FARMER_WELFARE_SCHEMES = response.data.data;
-console.log(FARMER_WELFARE_SCHEMES);
+
+  const schemes = response.data.data;
+  console.log("Farmer schemes loaded:", schemes);
 
   return (
     <WelfareSchemesPage
+      sModule="farmer_schemes"
       pageTitle="Farmer Welfare Schemes"
-      pageSubtitle="Discover government initiatives empowering women across India"
-      schemes={FARMER_WELFARE_SCHEMES}
+      pageSubtitle="Discover government initiatives empowering farmers across India"
+      schemes={schemes}
       carouselSlides={FARMER_CAROUSEL_SLIDES}
       filterCategories={FARMER_FILTER_CATEGORIES}
       accentColor={{ light: "blue-700", dark: "orange-400" }}
